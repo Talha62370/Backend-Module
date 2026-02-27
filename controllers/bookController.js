@@ -1,8 +1,5 @@
 const Book = require('../models/Book');
 
-// @desc    Get all books
-// @route   GET /api/books
-// @access  Public
 const getBooks = async (req, res) => {
   try {
     const books = await Book.find();
@@ -12,9 +9,7 @@ const getBooks = async (req, res) => {
   }
 };
 
-// @desc    Get a single book by ID
-// @route   GET /api/books/:id
-// @access  Public
+
 const getBookById = async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);
@@ -28,9 +23,6 @@ const getBookById = async (req, res) => {
   }
 };
 
-// @desc    Create a book
-// @route   POST /api/books
-// @access  Protected
 const createBook = async (req, res) => {
   try {
     const { title, author, genre, price, inStock } = req.body;
@@ -54,9 +46,6 @@ const createBook = async (req, res) => {
   }
 };
 
-// @desc    Update a book
-// @route   PUT /api/books/:id
-// @access  Protected
 const updateBook = async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);
@@ -68,7 +57,7 @@ const updateBook = async (req, res) => {
     const updatedBook = await Book.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true, runValidators: true } // Returns the updated document
+      { new: true, runValidators: true } 
     );
 
     res.status(200).json(updatedBook);
@@ -77,9 +66,7 @@ const updateBook = async (req, res) => {
   }
 };
 
-// @desc    Delete a book
-// @route   DELETE /api/books/:id
-// @access  Protected
+
 const deleteBook = async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);

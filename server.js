@@ -7,14 +7,14 @@ connectDB();
 
 const app = express();
 
-// Middleware to parse JSON (Crucial for Postman testing)
+// Middleware
 app.use(express.json());
 
 // Routes
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/books', require('./routes/bookRoutes'));
 
-// Basic health check route
+// Basic route
 app.get('/', (req, res) => {
   res.send('Book Catalog API is running...');
 });

@@ -3,12 +3,11 @@ const router = express.Router();
 const { getBooks, getBookById, createBook, updateBook, deleteBook } = require('../controllers/bookController');
 const { protect } = require('../middleware/authMiddleware');
 
-// Public routes (No token needed)
+// Public routes
 router.get('/', getBooks);
 router.get('/:id', getBookById);
 
-// Protected routes (Require token)
-// We add "protect" as the second argument to act as the bouncer
+// Protected routes
 router.post('/', protect, createBook);
 router.put('/:id', protect, updateBook);
 router.delete('/:id', protect, deleteBook);
